@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>개발 2실 Workshop 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-primary: #f8fafc;
+        --bg-secondary: #e2e8f0;
+        --bg-card: #ffffff;
+        --bg-card-hover: #f1f5f9;
+        --accent-blue: #2563eb;
+        --accent-cyan: #0891b2;
+        --accent-emerald: #059669;
+        --accent-amber: #d97706;
+        --accent-rose: #dc2626;
+        --text-primary: #0f172a;
+        --text-secondary: #334155;
+        --text-muted: #64748b;
+        --border-color: #cbd5e1;
+        --gradient-1: linear-gradient(135deg, #2563eb 0%, #0891b2 100%);
+        --gradient-2: linear-gradient(135deg, #059669 0%, #0891b2 100%);
+        --shadow-glow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.7;
+        min-height: 100vh;
+      }
+
+      /* Animated Background */
+      .bg-pattern {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        background: radial-gradient(
+            ellipse at 20% 20%,
+            rgba(37, 99, 235, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 80%,
+            rgba(8, 145, 178, 0.06) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 50% 50%,
+            rgba(5, 150, 105, 0.04) 0%,
+            transparent 70%
+          );
+      }
+
+      /* Snow Effect */
+      .snowflakes {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .snowflake {
+        position: absolute;
+        top: -10px;
+        color: rgba(37, 99, 235, 0.3);
+        font-size: 1em;
+        animation: fall linear infinite;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 2px solid var(--border-color);
+        padding: 0.8rem 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      nav ul {
+        display: flex;
+        gap: 0.5rem;
+        list-style: none;
+        max-width: 1400px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--text-primary);
+        background: var(--bg-card);
+      }
+
+      /* Main Content */
+      main {
+        position: relative;
+        z-index: 2;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 6rem 2rem 4rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 4rem 0 6rem;
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.1) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #dbeafe;
+        border: 2px solid #2563eb;
+        padding: 0.6rem 1.4rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        color: #1e40af;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+      }
+
+      .hero h1 {
+        font-family: "Outfit", sans-serif;
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 700;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-subtitle {
+        font-size: 1.4rem;
+        color: var(--text-primary);
+        margin-bottom: 2rem;
+        font-weight: 500;
+      }
+
+      .hero-info {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero-info-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-primary);
+        font-size: 1.05rem;
+        font-weight: 600;
+        background: #f1f5f9;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+      }
+
+      .hero-info-item .icon {
+        font-size: 1.3rem;
+      }
+
+      /* Section Styles */
+      section {
+        margin-bottom: 4rem;
+        scroll-margin-top: 5rem;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid #2563eb;
+      }
+
+      .section-icon {
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gradient-1);
+        border-radius: 12px;
+        font-size: 1.6rem;
+      }
+
+      .section-title {
+        font-family: "Outfit", sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1e40af;
+      }
+
+      /* Cards */
+      .card {
+        background: var(--bg-card);
+        border: 2px solid var(--border-color);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+
+      .card:hover {
+        background: var(--bg-card-hover);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        transform: translateY(-2px);
+      }
+
+      .card-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #1e40af;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      /* Grid Layouts */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+
+      /* Stats */
+      .stat-card {
+        background: var(--bg-card);
+        border: 2px solid var(--border-color);
+        border-radius: 16px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      .stat-value {
+        font-family: "Outfit", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .stat-label {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+
+      /* Tables */
+      .table-wrapper {
+        overflow-x: auto;
+        border-radius: 12px;
+        border: 2px solid var(--border-color);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      th {
+        background: linear-gradient(135deg, #1e40af 0%, #0891b2 100%);
+        color: #ffffff;
+        font-weight: 700;
+        text-align: left;
+        padding: 1rem;
+        white-space: nowrap;
+        position: sticky;
+        top: 0;
+        font-size: 0.95rem;
+      }
+
+      td {
+        padding: 0.85rem 1rem;
+        border-top: 1px solid var(--border-color);
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      tr:hover td {
+        background: #e0f2fe;
+      }
+
+      tr:nth-child(even) td {
+        background: #f8fafc;
+      }
+
+      tr:nth-child(even):hover td {
+        background: #e0f2fe;
+      }
+
+      /* Status Badges */
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.35rem 0.85rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .badge-success {
+        background: #059669;
+        color: #ffffff;
+      }
+
+      .badge-warning {
+        background: #d97706;
+        color: #ffffff;
+      }
+
+      .badge-danger {
+        background: #dc2626;
+        color: #ffffff;
+      }
+
+      .badge-info {
+        background: #2563eb;
+        color: #ffffff;
+      }
+
+      /* Timeline */
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--gradient-1);
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-bottom: 2rem;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -2.4rem;
+        top: 0.3rem;
+        width: 14px;
+        height: 14px;
+        background: #2563eb;
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px var(--bg-primary);
+      }
+
+      .timeline-time {
+        color: #1e40af;
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-content {
+        background: var(--bg-card);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+
+      /* Lists */
+      .list-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+
+      .list-item:last-child {
+        border-bottom: none;
+      }
+
+      .list-icon {
+        color: #0891b2;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+
+      /* Price Tags */
+      .price {
+        font-family: "Outfit", sans-serif;
+        font-weight: 700;
+        color: #059669;
+      }
+
+      .price-large {
+        font-size: 1.5rem;
+      }
+
+      /* Group Cards */
+      .group-card {
+        background: var(--bg-card);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1.25rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .group-card:hover {
+        border-color: var(--accent-blue);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .group-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+        font-size: 1.05rem;
+      }
+
+      .group-members {
+        color: var(--text-primary);
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+
+      /* Schedule Table */
+      .schedule-table {
+        font-size: 0.9rem;
+      }
+
+      .schedule-table th {
+        background: linear-gradient(135deg, #1e40af 0%, #0891b2 100%);
+        color: #ffffff;
+        font-size: 0.85rem;
+        padding: 0.75rem 0.5rem;
+      }
+
+      .schedule-table td {
+        padding: 0.6rem 0.5rem;
+        vertical-align: top;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .schedule-time {
+        font-weight: 700;
+        color: #1e40af;
+        white-space: nowrap;
+      }
+
+      .schedule-activity {
+        background: #dbeafe;
+        color: #1e40af;
+        padding: 0.3rem 0.6rem;
+        border-radius: 6px;
+        display: inline-block;
+        margin: 0.1rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        border: 1px solid #93c5fd;
+      }
+
+      /* Alert Box */
+      .alert {
+        background: #fef3c7;
+        border-left: 6px solid #d97706;
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        margin: 1rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .alert-title {
+        font-weight: 700;
+        color: #92400e;
+        margin-bottom: 0.5rem;
+        font-size: 1.05rem;
+      }
+
+      /* Menu Section */
+      .menu-category {
+        margin-bottom: 2rem;
+      }
+
+      .menu-category-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #0891b2;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      .menu-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px dashed #cbd5e1;
+      }
+
+      .menu-item:last-child {
+        border-bottom: none;
+      }
+
+      .menu-name {
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      .menu-price {
+        color: #059669;
+        font-weight: 700;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 3rem 2rem;
+        color: var(--text-primary);
+        font-size: 1rem;
+        font-weight: 600;
+        border-top: 3px solid var(--border-color);
+        margin-top: 4rem;
+        background: #f1f5f9;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        nav {
+          padding: 0.5rem 1rem;
+        }
+
+        nav ul {
+          gap: 0.25rem;
+        }
+
+        nav a {
+          padding: 0.4rem 0.6rem;
+          font-size: 0.75rem;
+        }
+
+        main {
+          padding: 5rem 1rem 2rem;
+        }
+
+        .hero {
+          padding: 2rem 0 4rem;
+        }
+
+        .hero-info {
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.75rem;
+        }
+
+        .schedule-table {
+          font-size: 0.7rem;
+        }
+      }
+
+      /* Image Gallery */
+      .image-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .image-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 3px solid var(--border-color);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .image-item:hover {
+        transform: scale(1.02);
+        border-color: #2563eb;
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
+      }
+
+      .image-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      .image-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .image-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(30, 64, 175, 0.95));
+        color: white;
+        padding: 2rem 1rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+
+      .image-zoom-hint {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        background: #2563eb;
+        color: white;
+        padding: 0.35rem 0.7rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .image-item:hover .image-zoom-hint {
+        opacity: 1;
+      }
+
+      /* Modal */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 10000;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        cursor: zoom-out;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .modal-content {
+        max-width: 95vw;
+        max-height: 90vh;
+        position: relative;
+      }
+
+      .modal-content img {
+        max-width: 100%;
+        max-height: 85vh;
+        border-radius: 8px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-close {
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 48px;
+        height: 48px;
+        background: #ffffff;
+        border: 2px solid #e2e8f0;
+        border-radius: 50%;
+        color: #0f172a;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 10001;
+      }
+
+      .modal-close:hover {
+        background: #dc2626;
+        border-color: #dc2626;
+        color: #ffffff;
+      }
+
+      .modal-caption {
+        text-align: center;
+        color: #ffffff;
+        margin-top: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .modal-nav {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        background: #ffffff;
+        border: 2px solid #e2e8f0;
+        border-radius: 50%;
+        color: #0f172a;
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 10001;
+      }
+
+      .modal-nav:hover {
+        background: #2563eb;
+        border-color: #2563eb;
+        color: #ffffff;
+      }
+
+      .modal-prev {
+        left: 1.5rem;
+      }
+
+      .modal-next {
+        right: 1.5rem;
+      }
+
+      /* Print Styles */
+      @media print {
+        nav,
+        .snowflakes,
+        .bg-pattern,
+        .modal-overlay {
+          display: none;
+        }
+
+        body {
+          background: white;
+          color: black;
+        }
+
+        .card,
+        .stat-card,
+        .group-card {
+          border: 1px solid #ddd;
+          background: white;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-pattern"></div>
+
+    <!-- Snow Effect -->
+    <div class="snowflakes" aria-hidden="true">
+      <script>
+        for (let i = 0; i < 30; i++) {
+          const snowflake = document.createElement("div");
+          snowflake.className = "snowflake";
+          snowflake.innerHTML = "❄";
+          snowflake.style.left = Math.random() * 100 + "%";
+          snowflake.style.animationDuration = Math.random() * 3 + 5 + "s";
+          snowflake.style.animationDelay = Math.random() * 5 + "s";
+          snowflake.style.opacity = Math.random() * 0.5 + 0.2;
+          snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+          document.querySelector(".snowflakes").appendChild(snowflake);
+        }
+      </script>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="#overview">개요</a></li>
+        <li><a href="#participants">참석자</a></li>
+        <li><a href="#budget">예산</a></li>
+        <li><a href="#ski">스키강습</a></li>
+        <li><a href="#schedule">일정</a></li>
+        <li><a href="#transport">교통</a></li>
+        <li><a href="#activities">액티비티</a></li>
+        <li><a href="#food">식당</a></li>
+        <li><a href="#insurance">보험</a></li>
+        <li><a href="#notes">참고</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-badge">
+          <span>🎿</span>
+          <span>1박 2일 Winter Workshop</span>
+        </div>
+        <h1>개발 2실 Workshop</h1>
+        <p class="hero-subtitle">2025.12.12 ~ 13 | 강촌 엘리시안 리조트</p>
+        <div class="hero-info">
+          <div class="hero-info-item">
+            <span class="icon">📅</span>
+            <span>12월 12일(금) ~ 13일(토)</span>
+          </div>
+          <div class="hero-info-item">
+            <span class="icon">📍</span>
+            <span>강촌 엘리시안 리조트</span>
+          </div>
+          <div class="hero-info-item">
+            <span class="icon">👥</span>
+            <span>총 13명 (성인 10명 + 자녀 3명)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overview Stats -->
+      <section id="overview">
+        <div class="section-header">
+          <div class="section-icon">📊</div>
+          <h2 class="section-title">일정 개요</h2>
+        </div>
+        <div class="grid-4">
+          <div class="stat-card">
+            <div class="stat-value">13명</div>
+            <div class="stat-label">총 참석 인원</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">8명</div>
+            <div class="stat-label">숙박 인원</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">150만</div>
+            <div class="stat-label">총 예산</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">15만</div>
+            <div class="stat-label">인당 예산</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Participants -->
+      <section id="participants">
+        <div class="section-header">
+          <div class="section-icon">👥</div>
+          <h2 class="section-title">참석 인원</h2>
+        </div>
+
+        <div class="card">
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>번호</th>
+                  <th>이름</th>
+                  <th>참석</th>
+                  <th>숙박</th>
+                  <th>자녀</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>김병수</td>
+                  <td><span class="badge badge-success">✅ 참석</span></td>
+                  <td><span class="badge badge-success">✅ 숙박</span></td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>서영태</td>
+                  <td><span class="badge badge-success">✅ 참석</span></td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>조은혜</td>
+                  <td><span class="badge badge-danger">❌ 불참</span></td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>인치수</td>
+                  <td><span class="badge badge-success">✅ 참석</span></td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>김준혁</td>
+                  <td><span class="badge badge-success">✅ 참석</span></td>
+                  <td><span class="badge badge-success">✅ 숙박</span></td>
+                  <td><span class="badge badge-info">✅ 자녀</span></td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>강현숙</td>
+                  <td><span class="badge badge-success">✅ 참석</span></td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>장문종</td>
+                  <td><span class="badge badge-success">✅ 참석</span></td>
+                  <td><span class="badge badge-success">✅ 숙박</span></td>
+                  <td><span class="badge badge-info">✅ 자녀</span></td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>송지원</td>
+                  <td><span class="badge badge-success">✅ 참석</span></td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>곽병문</td>
+                  <td><span class="badge badge-success">✅ 참석</span></td>
+                  <td><span class="badge badge-success">✅ 숙박</span></td>
+                  <td><span class="badge badge-info">✅ 자녀</span></td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>성형모</td>
+                  <td><span class="badge badge-success">✅ 참석</span></td>
+                  <td><span class="badge badge-success">✅ 숙박</span></td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>김민섭</td>
+                  <td><span class="badge badge-success">✅ 참석</span></td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid-4">
+          <div class="group-card">
+            <div class="group-title">👤 총원</div>
+            <div class="group-members">13명 (성인 10명 + 자녀 3명)</div>
+          </div>
+          <div class="group-card">
+            <div class="group-title">🏨 숙박 인원</div>
+            <div class="group-members">
+              8명 (곽병문, 김병수, 장문종, 김준혁, 성형모 + 자녀 3명)
+            </div>
+          </div>
+          <div class="group-card">
+            <div class="group-title">🌙 야간 인원</div>
+            <div class="group-members">3명 (서영태, 송지원, 김민섭)</div>
+          </div>
+          <div class="group-card">
+            <div class="group-title">🚗 조기 귀가</div>
+            <div class="group-members">2명 (강현숙, 인치수)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Budget -->
+      <section id="budget">
+        <div class="section-header">
+          <div class="section-icon">💰</div>
+          <h2 class="section-title">경비 예산</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="stat-card">
+            <div class="stat-value">150,000원</div>
+            <div class="stat-label">인당 예산</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">1,500,000원</div>
+            <div class="stat-label">총 예산</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem">
+          <div class="card-title">📋 경비 내역</div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>품목</th>
+                  <th>단가</th>
+                  <th>수량</th>
+                  <th>소계</th>
+                  <th>비고</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>숙박</td>
+                  <td class="price">376,500원</td>
+                  <td>1</td>
+                  <td class="price">376,500원</td>
+                  <td>강촌 엘리시안(디럭스)</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>썰매</td>
+                  <td class="price">15,000원</td>
+                  <td>1</td>
+                  <td class="price">15,000원</td>
+                  <td>스노우힐&펀파크: 민섭 (숙박객 50% 할인)</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>의류 대여(4시간)</td>
+                  <td class="price">10,000원</td>
+                  <td>1</td>
+                  <td class="price">10,000원</td>
+                  <td>스키복: 민섭</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>성인: 리프트+장비+의류(6시간)</td>
+                  <td class="price">69,000원</td>
+                  <td>3</td>
+                  <td class="price">207,000원</td>
+                  <td>준혁, 치수, 형모</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>아동: 리프트+장비(6시간)</td>
+                  <td class="price">43,000원</td>
+                  <td>3</td>
+                  <td class="price">129,000원</td>
+                  <td>준혁, 병문, 문종 자녀</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>액티비티 카페</td>
+                  <td class="price">20,000원</td>
+                  <td>5</td>
+                  <td class="price">100,000원</td>
+                  <td>카페: 현숙, 지원, 민섭 (오전+오후)</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>점심식사</td>
+                  <td class="price">28,000원</td>
+                  <td>13</td>
+                  <td class="price">364,000원</td>
+                  <td>리조트내 식당 (평균가 16,500원)</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>저녁식사</td>
+                  <td class="price">27,000원</td>
+                  <td>11</td>
+                  <td class="price">297,000원</td>
+                  <td>배달 or 장보기</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr style="background: var(--bg-secondary)">
+                  <td colspan="4" style="text-align: right; font-weight: 600">
+                    총계
+                  </td>
+                  <td class="price price-large" colspan="2">1,498,500원</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <div class="alert">
+          <div class="alert-title">💳 결제 안내</div>
+          <div class="list-item">
+            <span class="list-icon">•</span>
+            <span>대여료: 병문님 or 문종님 카드</span>
+          </div>
+          <div class="list-item">
+            <span class="list-icon">•</span>
+            <span>점심식사: 병수님 카드</span>
+          </div>
+          <div class="list-item">
+            <span class="list-icon">•</span>
+            <span>여행자보험: 개인 가입 (개인정보 문제)</span>
+          </div>
+          <div class="list-item">
+            <span class="list-icon">•</span>
+            <span>교통비: 개인 부담</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ski Lesson -->
+      <section id="ski">
+        <div class="section-header">
+          <div class="section-icon">🎿</div>
+          <h2 class="section-title">스키 강습 정보</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">👶 어린이 개인 강습</div>
+            <div class="list-item">
+              <span class="list-icon">👥</span>
+              <span><strong>인원:</strong> 어린이 3명</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">💰</span>
+              <span
+                ><strong>총 강습비:</strong>
+                <span class="price">155,000원</span></span
+              >
+            </div>
+            <div class="list-item">
+              <span class="list-icon">👤</span>
+              <span
+                ><strong>인당 강습비:</strong>
+                <span class="price">51,666원</span></span
+              >
+            </div>
+            <div class="list-item">
+              <span class="list-icon">⏰</span>
+              <span><strong>강습시간:</strong> 11시 ~ 13시 (2시간)</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">🚗</span>
+              <span><strong>도착 시간:</strong> 당일 10시까지 도착 필요</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">📍</span>
+              <span
+                ><strong>강습 장소:</strong> 강원도 춘천시 남산면 서백길 74
+                월드강습센터</span
+              >
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">🎁 제공 사항 & 옵션</div>
+            <div class="list-item">
+              <span class="list-icon">✅</span>
+              <span>고글, 헬멧, 보호대 <strong>무료 대여</strong></span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">👕</span>
+              <span
+                >의류대여: 5시간까지 <span class="price">10,000원</span>, 6시간
+                이상 <span class="price">15,000원</span></span
+              >
+            </div>
+            <div class="list-item">
+              <span class="list-icon">🎿</span>
+              <span
+                >리프트+장비대여 (4시간: <span class="price">39,000원</span> /
+                5시간: <span class="price">41,000원</span> / 6시간:
+                <span class="price">43,000원</span>)</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">👶 강습 참석자</div>
+          <div class="grid-3">
+            <div class="group-card">
+              <div class="group-title">🎿 김준혁(자녀)</div>
+              <div class="group-members">11시 강습</div>
+            </div>
+            <div class="group-card">
+              <div class="group-title">🎿 곽병문(자녀)</div>
+              <div class="group-members">11시 강습</div>
+            </div>
+            <div class="group-card">
+              <div class="group-title">🎿 장문종(자녀)</div>
+              <div class="group-members">11시 강습</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Schedule -->
+      <section id="schedule">
+        <div class="section-header">
+          <div class="section-icon">📋</div>
+          <h2 class="section-title">워크샵 일정 - 12월 12일 (금)</h2>
+        </div>
+
+        <div class="card">
+          <div class="table-wrapper">
+            <table class="schedule-table">
+              <thead>
+                <tr>
+                  <th>시간</th>
+                  <th>워크샵 일정</th>
+                  <th>스키 그룹1</th>
+                  <th>스키 그룹2</th>
+                  <th>어린이 스키</th>
+                  <th>눈썰매</th>
+                  <th>카페</th>
+                  <th>비고</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="schedule-time">09:00-09:30</td>
+                  <td>-</td>
+                  <td><span class="schedule-activity">스키 (병수)</span></td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td class="schedule-time">10:00-10:30</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>
+                    <span class="schedule-activity"
+                      >랜탈 샵<br />(준혁, 형모, 치수)</span
+                    >
+                  </td>
+                  <td>
+                    <span class="schedule-activity"
+                      >랜탈 샵<br />(어린이3)</span
+                    >
+                  </td>
+                  <td>
+                    <span class="schedule-activity">랜탈 샵<br />(민섭)</span>
+                  </td>
+                  <td>-</td>
+                  <td>장비 일괄 랜탈</td>
+                </tr>
+                <tr
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #dc2626 0%,
+                      #ea580c 100%
+                    ) !important;
+                  "
+                >
+                  <td
+                    class="schedule-time"
+                    style="color: #fff; font-weight: 800"
+                  >
+                    10:30-11:00
+                  </td>
+                  <td>
+                    <span
+                      class="schedule-activity"
+                      style="
+                        background: #fff;
+                        color: #dc2626;
+                        font-weight: 800;
+                        font-size: 1rem;
+                        padding: 0.5rem 1rem;
+                        border: 2px solid #fff;
+                      "
+                      >🚩 리조트 집결</span
+                    >
+                  </td>
+                  <td style="color: #fff; font-weight: 600">-</td>
+                  <td style="color: #fff; font-weight: 600">-</td>
+                  <td style="color: #fff; font-weight: 600">-</td>
+                  <td style="color: #fff; font-weight: 600">-</td>
+                  <td style="color: #fff; font-weight: 600">-</td>
+                  <td style="color: #fff; font-weight: 700">
+                    ⚠️ 셔틀 버스 시간 확인
+                  </td>
+                </tr>
+                <tr>
+                  <td class="schedule-time">11:00-13:00</td>
+                  <td>
+                    <span class="schedule-activity"
+                      >액티비티 - 오전<br />(그룹 활동)</span
+                    >
+                  </td>
+                  <td>
+                    <span class="schedule-activity"
+                      >스키: [병수], 준혁, 형모<br />보드: [영태], 치수</span
+                    >
+                  </td>
+                  <td>-</td>
+                  <td>
+                    <span class="schedule-activity"
+                      >스키 강습<br />(어린이3)</span
+                    >
+                  </td>
+                  <td><span class="schedule-activity">[민섭]</span></td>
+                  <td>
+                    <span class="schedule-activity"
+                      >[지원]<br />현숙, 병문, 문종</span
+                    >
+                  </td>
+                  <td>인증 사진 찍기<br />가족관계증명서 체크</td>
+                </tr>
+                <tr>
+                  <td class="schedule-time">13:00-14:00</td>
+                  <td>
+                    <span class="schedule-activity"
+                      >점심 식사<br />(단체 활동)</span
+                    >
+                  </td>
+                  <td colspan="5">
+                    <span class="schedule-activity">전체 점심 식사</span>
+                  </td>
+                  <td>카페 그룹 자리 선점<br />4인 테이블 4개<br />단체사진</td>
+                </tr>
+                <tr>
+                  <td class="schedule-time">14:00-14:30</td>
+                  <td>-</td>
+                  <td colspan="5">-</td>
+                  <td>숙소 체크인</td>
+                </tr>
+                <tr>
+                  <td class="schedule-time">14:30-16:00</td>
+                  <td>
+                    <span class="schedule-activity"
+                      >액티비티 - 오후<br />(그룹 활동)</span
+                    >
+                  </td>
+                  <td>
+                    <span class="schedule-activity"
+                      >스키: 병수<br />보드: 영태</span
+                    >
+                  </td>
+                  <td>
+                    <span class="schedule-activity"
+                      >스키: [준혁], 형모, 어린이3<br />보드: 치수</span
+                    >
+                  </td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>
+                    <span class="schedule-activity"
+                      >[지원]<br />현숙, 병문, 문종, 민섭</span
+                    >
+                  </td>
+                  <td>장비 일괄 반납</td>
+                </tr>
+                <tr>
+                  <td class="schedule-time">16:00-17:00</td>
+                  <td>
+                    <span class="schedule-activity"
+                      >워크샵<br />(단체 활동)</span
+                    >
+                  </td>
+                  <td colspan="5">
+                    <span class="schedule-activity"
+                      >2025년 팀별 성과 및 회고</span
+                    >
+                  </td>
+                  <td>숙소에서 진행</td>
+                </tr>
+                <tr>
+                  <td class="schedule-time">17:00-17:30</td>
+                  <td><span class="schedule-activity">정비 시간</span></td>
+                  <td colspan="5">
+                    <span class="schedule-activity">귀가: 현숙, 치수</span>
+                  </td>
+                  <td>귀가 교통편 체크</td>
+                </tr>
+                <tr>
+                  <td class="schedule-time">17:30-18:30</td>
+                  <td><span class="schedule-activity">저녁 준비</span></td>
+                  <td colspan="5">
+                    <span class="schedule-activity"
+                      >저녁준비: [문종, 병문, 준혁]</span
+                    >
+                  </td>
+                  <td>음식 픽업, 장보기</td>
+                </tr>
+                <tr>
+                  <td class="schedule-time">18:30-20:00</td>
+                  <td><span class="schedule-activity">저녁 활동</span></td>
+                  <td>
+                    <span class="schedule-activity"
+                      >스키: 병수<br />보드: 영태</span
+                    >
+                  </td>
+                  <td colspan="4">
+                    <span class="schedule-activity">저녁 시간</span>
+                  </td>
+                  <td>숙소</td>
+                </tr>
+                <tr>
+                  <td class="schedule-time">20:00-24:00</td>
+                  <td><span class="schedule-activity">자유 시간</span></td>
+                  <td colspan="5">
+                    <span class="schedule-activity">자유 시간</span>
+                  </td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem">
+          <div class="card-title">👥 그룹 구성</div>
+          <div class="grid-3">
+            <div class="group-card">
+              <div class="group-title">🎿 스키 그룹1</div>
+              <div class="group-members">김병수(스키), 서영태(보드)</div>
+            </div>
+            <div class="group-card">
+              <div class="group-title">🏂 스키 그룹2</div>
+              <div class="group-members">
+                인치수(보드), 성형모(스키) - 어린이 임시 보호자
+              </div>
+            </div>
+            <div class="group-card">
+              <div class="group-title">👶 어린이 스키</div>
+              <div class="group-members">
+                김준혁(보호자), 김준혁(자녀), 곽병문(자녀), 장문종(자녀)
+              </div>
+            </div>
+            <div class="group-card">
+              <div class="group-title">🛷 눈썰매</div>
+              <div class="group-members">김민섭</div>
+            </div>
+            <div class="group-card">
+              <div class="group-title">☕ 카페</div>
+              <div class="group-members">
+                송지원, 강현숙, 곽병문, 장문종, 김민섭
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transport -->
+      <section id="transport">
+        <div class="section-header">
+          <div class="section-icon">🚗</div>
+          <h2 class="section-title">교통편</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">🚇 지하철</div>
+            <div class="list-item">
+              <span class="list-icon">•</span>
+              <span>강현숙</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">•</span>
+              <span>송지원</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">🚌 대중교통</div>
+            <div class="list-item">
+              <span class="list-icon">•</span>
+              <span>백양리역 셔틀버스: 리조트 셔틀 버스 시간 확인 필요</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🚌 대중교통 시간표 (클릭하여 확대)</div>
+          <div class="image-gallery" data-gallery="transport">
+            <div class="image-item" onclick="openModal('transport', 0)">
+              <img
+                src="images/shuttle-schedule.png"
+                alt="리조트 내부 셔틀 시간표"
+              />
+              <div class="image-caption">🚌 리조트 내부 셔틀 (주중)</div>
+              <div class="image-zoom-hint">🔍 클릭하여 확대</div>
+            </div>
+            <div class="image-item" onclick="openModal('transport', 1)">
+              <img
+                src="images/train-schedule-1.png"
+                alt="백양리역 경춘선 시간표 오전"
+              />
+              <div class="image-caption">🚇 백양리역 경춘선 (오전)</div>
+              <div class="image-zoom-hint">🔍 클릭하여 확대</div>
+            </div>
+            <div class="image-item" onclick="openModal('transport', 2)">
+              <img
+                src="images/train-schedule-3.png"
+                alt="백양리역 경춘선 시간표 오후"
+              />
+              <div class="image-caption">🚇 백양리역 경춘선 (오후)</div>
+              <div class="image-zoom-hint">🔍 클릭하여 확대</div>
+            </div>
+            <div class="image-item" onclick="openModal('transport', 3)">
+              <img
+                src="images/train-schedule-2.png"
+                alt="백양리역 경춘선 시간표 야간"
+              />
+              <div class="image-caption">🚇 백양리역 경춘선 (야간)</div>
+              <div class="image-zoom-hint">🔍 클릭하여 확대</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🚗 카풀</div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>운전자</th>
+                  <th>동승자</th>
+                  <th>출발 정보</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>김준혁(자녀)</td>
+                  <td>김민섭, 성형모</td>
+                  <td>
+                    7시40분 신대방삼거리 출발, 8시 픽업, 월드스키 10시 도착
+                  </td>
+                </tr>
+                <tr>
+                  <td>곽병문(자녀)</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>김병수</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>서영태</td>
+                  <td>인치수</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>장문종(자녀)</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Activities -->
+      <section id="activities">
+        <div class="section-header">
+          <div class="section-icon">🎯</div>
+          <h2 class="section-title">액티비티 정보</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">🎿 스키 or 보드</div>
+            <div class="list-item">
+              <span class="list-icon">🎿</span>
+              <span>김병수 (스키) - <strong>9시부터</strong></span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">🏂</span>
+              <span>서영태 (보드)</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">🎿</span>
+              <span>김준혁 (스키)</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">🏂</span>
+              <span>인치수 (보드)</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">🎿</span>
+              <span>성형모 (스키)</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">🎿</span>
+              <span>김준혁 자녀 (스키)</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">🎿</span>
+              <span>곽병문 자녀 (스키)</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">🎿</span>
+              <span>장문종 자녀 (스키)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="group-card">
+            <div class="group-title">🛷 눈썰매</div>
+            <div class="group-members">김민섭 (오전권, 숙박객 50% 할인)</div>
+          </div>
+          <div class="group-card">
+            <div class="group-title">☕ 카페</div>
+            <div class="group-members">
+              강현숙, 송지원, 장문종, 곽병문, 김민섭
+            </div>
+          </div>
+          <div class="group-card">
+            <div class="group-title">🎤 노래방</div>
+            <div class="group-members">17:30~, 일반 3만원</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem">
+          <div class="card-title">🏨 리조트 내부 시설</div>
+          <div class="grid-4">
+            <div class="group-card">
+              <div class="group-title">🎤 노래방</div>
+              <div class="group-members">17:30~, 일반 3만원</div>
+            </div>
+            <div class="group-card">
+              <div class="group-title">🌸 꽃가람정원</div>
+              <div class="group-members">산책로</div>
+            </div>
+            <div class="group-card">
+              <div class="group-title">🎮 게임존</div>
+              <div class="group-members">오락실</div>
+            </div>
+            <div class="group-card">
+              <div class="group-title">☕ 카페</div>
+              <div class="group-members">리조트 내 카페</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Food -->
+      <section id="food">
+        <div class="section-header">
+          <div class="section-icon">🍽️</div>
+          <h2 class="section-title">음식점 정보 - 보샬레 (스키하우스 2층)</h2>
+        </div>
+
+        <div class="card">
+          <div class="card-title">📍 스키하우스 안내 (클릭하여 확대)</div>
+          <div class="image-gallery" data-gallery="food">
+            <div class="image-item" onclick="openModal('food', 0)">
+              <img
+                src="images/skihouse-exterior.png"
+                alt="스키하우스 컨벤션 센터 외관"
+              />
+              <div class="image-caption">🏔️ 스키하우스 컨벤션 센터 외관</div>
+              <div class="image-zoom-hint">🔍 클릭하여 확대</div>
+            </div>
+            <div class="image-item" onclick="openModal('food', 1)">
+              <img src="images/skihouse-info.png" alt="스키하우스 층별 안내" />
+              <div class="image-caption">📋 스키하우스 층별 안내 (1F~3F)</div>
+              <div class="image-zoom-hint">🔍 클릭하여 확대</div>
+            </div>
+            <div class="image-item" onclick="openModal('food', 2)">
+              <img
+                src="images/skiresort-map.png"
+                alt="엘리시안 강촌 스키장 지도"
+              />
+              <div class="image-caption">🗺️ 엘리시안 강촌 스키장 지도</div>
+              <div class="image-zoom-hint">🔍 클릭하여 확대</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">⏰ 운영 시간</div>
+          <div class="list-item">
+            <span class="list-icon">📅</span>
+            <span
+              ><strong>수–토:</strong> 08:00–24:00 (식사 주문 09:00부터)</span
+            >
+          </div>
+          <div class="list-item">
+            <span class="list-icon">📅</span>
+            <span
+              ><strong>일–화:</strong> 08:00–22:00 (식사 주문 09:00부터)</span
+            >
+          </div>
+          <div class="list-item">
+            <span class="list-icon">🚫</span>
+            <span><strong>Last Order:</strong> 일–목 20:30 / 금–토 22:30</span>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 1.5rem">
+          <div class="card">
+            <div class="menu-category">
+              <div class="menu-category-title">🍜 식사 메뉴</div>
+              <div class="menu-item">
+                <span class="menu-name">옛날 자장면</span
+                ><span class="menu-price">11,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">왕새우 튀김 우동</span
+                ><span class="menu-price">11,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">한우 소고기 미역국</span
+                ><span class="menu-price">15,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">차돌박이 설렁탕</span
+                ><span class="menu-price">15,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">한돈 김치찌개</span
+                ><span class="menu-price">15,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">매콤 제육 덮밥</span
+                ><span class="menu-price">15,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">수제 통 등심 로스카츠</span
+                ><span class="menu-price">16,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">치킨 가라아게 키마 카레 덮밥</span
+                ><span class="menu-price">16,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">차돌 쌀국수 & 짜조</span
+                ><span class="menu-price">18,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">고르곤 졸라/페페로니 피자</span
+                ><span class="menu-price">24,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">옛날 치킨 & 감자튀김</span
+                ><span class="menu-price">25,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">순살치킨 & 감자튀김</span
+                ><span class="menu-price">28,000원</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="menu-category">
+              <div class="menu-category-title">☕ 커피 / 티</div>
+              <div class="menu-item">
+                <span class="menu-name">아메리카노 (Hot/Ice)</span
+                ><span class="menu-price">5,500 / 6,500원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">카페라떼 (Hot/Ice)</span
+                ><span class="menu-price">6,500 / 7,500원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">바닐라라떼 (Hot/Ice)</span
+                ><span class="menu-price">7,000 / 8,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">초코라떼 (Hot/Ice)</span
+                ><span class="menu-price">6,500 / 7,500원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">유자차 (Hot/Ice)</span
+                ><span class="menu-price">6,500 / 7,500원</span>
+              </div>
+            </div>
+
+            <div class="menu-category">
+              <div class="menu-category-title">🍺 주류</div>
+              <div class="menu-item">
+                <span class="menu-name">생맥주(하이네켄)</span
+                ><span class="menu-price">8,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">카스 / 테라</span
+                ><span class="menu-price">7,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">미켈로울트라</span
+                ><span class="menu-price">6,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">제주맥주</span
+                ><span class="menu-price">7,000원</span>
+              </div>
+            </div>
+
+            <div class="menu-category">
+              <div class="menu-category-title">🥤 음료</div>
+              <div class="menu-item">
+                <span class="menu-name">콜라/사이다/파워에이드</span
+                ><span class="menu-price">4,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">비타민 워터</span
+                ><span class="menu-price">5,000원</span>
+              </div>
+              <div class="menu-item">
+                <span class="menu-name">생수</span
+                ><span class="menu-price">1,500원</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Insurance -->
+      <section id="insurance">
+        <div class="section-header">
+          <div class="section-icon">🛡️</div>
+          <h2 class="section-title">여행자 보험</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">👨 성인 참여자</div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>이름</th>
+                    <th>가입 여부</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>김병수</td>
+                    <td><span class="badge badge-success">✅ 완료</span></td>
+                  </tr>
+                  <tr>
+                    <td>서영태</td>
+                    <td><span class="badge badge-success">✅ 완료</span></td>
+                  </tr>
+                  <tr>
+                    <td>인치수</td>
+                    <td><span class="badge badge-success">✅ 완료</span></td>
+                  </tr>
+                  <tr>
+                    <td>김준혁</td>
+                    <td><span class="badge badge-success">✅ 완료</span></td>
+                  </tr>
+                  <tr>
+                    <td>강현숙</td>
+                    <td><span class="badge badge-success">✅ 완료</span></td>
+                  </tr>
+                  <tr>
+                    <td>장문종</td>
+                    <td><span class="badge badge-success">✅ 완료</span></td>
+                  </tr>
+                  <tr>
+                    <td>송지원</td>
+                    <td><span class="badge badge-success">✅ 완료</span></td>
+                  </tr>
+                  <tr>
+                    <td>곽병문</td>
+                    <td><span class="badge badge-danger">❌ 미가입</span></td>
+                  </tr>
+                  <tr>
+                    <td>성형모</td>
+                    <td><span class="badge badge-success">✅ 완료</span></td>
+                  </tr>
+                  <tr>
+                    <td>김민섭</td>
+                    <td><span class="badge badge-danger">❌ 미가입</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">👶 자녀 참여자</div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>이름</th>
+                    <th>가입 여부</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>김준혁(자녀)</td>
+                    <td><span class="badge badge-success">✅ 완료</span></td>
+                  </tr>
+                  <tr>
+                    <td>장문종(자녀)</td>
+                    <td><span class="badge badge-success">✅ 완료</span></td>
+                  </tr>
+                  <tr>
+                    <td>곽병문(자녀)</td>
+                    <td><span class="badge badge-danger">❌ 미가입</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-top: 1.5rem">
+              <div class="card-title">📋 보험 정보</div>
+              <div class="list-item">
+                <span class="list-icon">✅</span>
+                <span><strong>가입 현황:</strong> 10명 완료 / 3명 미가입</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert">
+          <div class="alert-title">⚠️ 미가입자 안내</div>
+          <div>
+            곽병문, 김민섭, 곽병문(자녀) - 개인 가입 필요 (개인정보 문제로 인해
+            개인이 가입하도록)
+          </div>
+        </div>
+      </section>
+
+      <!-- Notes -->
+      <section id="notes">
+        <div class="section-header">
+          <div class="section-icon">📝</div>
+          <h2 class="section-title">참고사항</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-title">💳 결제 안내</div>
+            <div class="list-item">
+              <span class="list-icon">•</span>
+              <span>액티비티 그룹별 법인카드 분배 필요</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">•</span>
+              <span>대여료: 병문님 or 문종님 카드</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">•</span>
+              <span>점심식사: 병수님 카드</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">🎒 준비물</div>
+            <div class="list-item">
+              <span class="list-icon">📄</span>
+              <span>자녀의 가족관계증명서 등 서류 (11:30까지 준비)</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">🛡️</span>
+              <span>개인 여행자보험 가입 확인</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">⏰ 시간 체크</div>
+            <div class="list-item">
+              <span class="list-icon">🚌</span>
+              <span>대중교통 그룹: 리조트 셔틀 버스 시간 확인</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">🎿</span>
+              <span>어린이 강습: 당일 10시까지 도착 필요</span>
+            </div>
+            <div class="list-item">
+              <span class="list-icon">🚗</span>
+              <span>조기 귀가 인원: 교통편 체크 (17:00-17:30)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert" style="margin-top: 1.5rem">
+          <div class="alert-title">💡 중요 사항</div>
+          <div class="list-item">
+            <span class="list-icon">•</span>
+            <span
+              >카페 인원 → 리조트 내부시설 탐방 팀으로 가도 무방 (오락실,
+              노래방, 카페 종합)</span
+            >
+          </div>
+          <div class="list-item">
+            <span class="list-icon">•</span>
+            <span>사전 결제하는 이용권, 렌탈권 등은 고정 예산</span>
+          </div>
+          <div class="list-item">
+            <span class="list-icon">•</span>
+            <span>현장결제 필요항목 예산 널널히 잡고 진행</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>개발 2실 Workshop 2025 | 마지막 업데이트: 2025년 12월 12일</p>
+    </footer>
+
+    <!-- Image Modal -->
+    <div class="modal-overlay" id="imageModal" onclick="closeModal(event)">
+      <button class="modal-close" onclick="closeModal(event)">✕</button>
+      <button class="modal-nav modal-prev" onclick="navigateModal(event, -1)">
+        ‹
+      </button>
+      <button class="modal-nav modal-next" onclick="navigateModal(event, 1)">
+        ›
+      </button>
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <img id="modalImage" src="" alt="" />
+        <div class="modal-caption" id="modalCaption"></div>
+      </div>
+    </div>
+
+    <script>
+      // Image galleries data
+      const galleries = {
+        transport: [
+          {
+            src: "images/shuttle-schedule.png",
+            caption: "🚌 리조트 내부 셔틀 시간표 (주중)",
+          },
+          {
+            src: "images/train-schedule-1.png",
+            caption: "🚇 백양리역 경춘선 시간표 (오전)",
+          },
+          {
+            src: "images/train-schedule-3.png",
+            caption: "🚇 백양리역 경춘선 시간표 (오후)",
+          },
+          {
+            src: "images/train-schedule-2.png",
+            caption: "🚇 백양리역 경춘선 시간표 (야간)",
+          },
+        ],
+        food: [
+          {
+            src: "images/skihouse-exterior.png",
+            caption: "🏔️ 스키하우스 컨벤션 센터 외관",
+          },
+          {
+            src: "images/skihouse-info.png",
+            caption: "📋 스키하우스 층별 안내 (1F~3F)",
+          },
+          {
+            src: "images/skiresort-map.png",
+            caption: "🗺️ 엘리시안 강촌 스키장 지도",
+          },
+        ],
+      };
+
+      let currentGallery = null;
+      let currentIndex = 0;
+
+      function openModal(gallery, index) {
+        currentGallery = gallery;
+        currentIndex = index;
+        updateModalImage();
+        document.getElementById("imageModal").classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal(event) {
+        if (
+          event.target.classList.contains("modal-overlay") ||
+          event.target.classList.contains("modal-close")
+        ) {
+          document.getElementById("imageModal").classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      }
+
+      function navigateModal(event, direction) {
+        event.stopPropagation();
+        const gallery = galleries[currentGallery];
+        currentIndex =
+          (currentIndex + direction + gallery.length) % gallery.length;
+        updateModalImage();
+      }
+
+      function updateModalImage() {
+        const gallery = galleries[currentGallery];
+        const item = gallery[currentIndex];
+        document.getElementById("modalImage").src = item.src;
+        document.getElementById("modalCaption").textContent =
+          item.caption + ` (${currentIndex + 1}/${gallery.length})`;
+      }
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        const modal = document.getElementById("imageModal");
+        if (!modal.classList.contains("active")) return;
+
+        if (e.key === "Escape") {
+          modal.classList.remove("active");
+          document.body.style.overflow = "";
+        } else if (e.key === "ArrowLeft") {
+          navigateModal(e, -1);
+        } else if (e.key === "ArrowRight") {
+          navigateModal(e, 1);
+        }
+      });
+    </script>
+  </body>
+</html>
